@@ -1,13 +1,200 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1{
+  font-size: 40pt;
+  color: #F4CE14;
 }
+
+h2, p + h2{
+  color: white;
+}
+
+/*navbar*/
+header{
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.navlink {
+  color: black; /* Change this to the desired color (e.g., blue) */
+  text-decoration: none;
+}
+
+#logo {
+  max-width: 100%;
+  height: auto;
+}
+
+#nav-links {
+  width: 75%;
+}
+
+#nav-links ul {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+/*intro about little lemon*/
+#intro-placeholder, #photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 30vh; /* Set a fixed height for the parent container */
+  background-color: #495e57;
+}
+
+.about-little-lemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically on the y-axis */
+  height: 100%; /* Take full available height of parent */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.about-little-lemon button {
+  max-width: 50%;
+  max-height: 50%;
+  background-color: #F4CE14;
+  border-radius: 4px;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 100%; /* Take full available height of parent */
+  width: auto; /* Maintain aspect ratio */
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 2%;
+  object-fit: contain; /* Make the image fit inside the container without losing aspect ratio */
+}
+
+
+/*specials placeholder*/
+/* Base styles for the section and its articles */
+#specials-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#specials {
+  color: black;
+}
+
+.articles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+article {
+  flex: 1 1 300px;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+figure {
+  margin: 0;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+p {
+  margin: 10px 0;
+}
+
+/* Button Styles */
+.order-delivery {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #F4CE14;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#photo-placeholder{
+  max-height: 20vh;
+}
+
+/* Style the footer container as a flex container */
+footer {
+  height: 15vh;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Distribute the content with equal spacing */
+  background-color: grey; /* Add a background color to the footer */
+  padding: 20px; /* Add padding to the footer */
+}
+footer ul{
+  list-style: none;
+}
+
+/* Style the links in the footer */
+footer a {
+  color: white; /* Change this to the desired color (e.g., blue) */
+  text-decoration: none; /* Remove underline from links */
+  margin-right: 10px; /* Adjust the spacing between the links */
+}
+
+/* Media Queries for Responsive Layout */
+@media screen and (max-width: 768px) {
+  #specials-placeholder {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  article {
+    flex: 1 1 100%; /* Full width for articles on screens up to 768px */
+    max-width: 100%;
+  }
+
+  /* Adjust button styles for smaller screens */
+  button, .order-delivery {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  article {
+    flex: 1 1 40%; /* Set different flex-basis and max-width for screens between 768px and 1024px */
+    max-width: 40%;
+  }
+}
+
