@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-function App() {
+
+function Home() {
     return (
             <main>
                 <section id="intro-placeholder">
@@ -9,7 +10,7 @@ function App() {
                         <h1>Little Lemon</h1>
                         <h2>Chicago</h2>
                         <p>Homemade food from organic ingredients from local farm</p>
-                        <button>Reserve a table</button>
+                        <Link to="/reservations">Reserve a table</Link>
                     </aside>
                     <div className="image-wrapper">
                         <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
@@ -66,4 +67,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;

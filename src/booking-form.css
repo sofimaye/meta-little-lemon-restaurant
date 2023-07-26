@@ -1,0 +1,14 @@
+.form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    width: 100%;
+}
+.booking-form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    max-width: 30vw;
+    gap: 20px;
+}
