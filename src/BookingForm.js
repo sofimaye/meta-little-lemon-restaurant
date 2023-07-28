@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-export default function BookingForm() {
+export default function BookingForm({availableTimes, updateTimes}) {
     const [formData, setFormData] = useState({
         date: new Date().toISOString().split('T')[0],
         time: '12:00',
@@ -8,35 +8,28 @@ export default function BookingForm() {
         occasion: 'birthday',
     });
 
-    const [availableTimes, setAvailableTimes] = useState([
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-    ]);
+    useEffect(() => {
+        updateTimes(formData.date)
+    }, []);
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        };
+    const handleDateSelected = (date) => {
+        updateTimes(date);
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        // Here you can handle the submission, e.g., sending data to the server
     };
-    console.log("Date", formData.date)
 
+    console.log(availableTimes);
     return (
         <div className="form">
             <form className="booking-form" onSubmit={handleSubmit}>
@@ -46,7 +39,10 @@ export default function BookingForm() {
                     id="res-date"
                     name="date"
                     value={formData.date}
-                    onChange={handleChange}
+                    onChange={e => {
+                        handleChange(e);
+                        handleDateSelected(e.target.value);
+                    }}
                 />
 
                 <label htmlFor="res-time">Choose time</label>
