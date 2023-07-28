@@ -26,17 +26,17 @@ export default function BookingForm({availableTimes, updateTimes}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
     };
 
-    console.log(availableTimes);
     return (
         <div className="form">
+            <h1 id="formTitle">Book now</h1>
             <form className="booking-form" onSubmit={handleSubmit}>
                 <label htmlFor="res-date">Choose date</label>
                 <input
                     type="date"
                     id="res-date"
+                    data-testid="res-date"
                     name="date"
                     value={formData.date}
                     onChange={e => {
@@ -46,7 +46,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                 />
 
                 <label htmlFor="res-time">Choose time</label>
-                <select id="res-time" name="time" value={formData.time} onChange={handleChange}>
+                <select id="res-time" data-testid="res-time" name="time" value={formData.time} onChange={handleChange}>
                     {availableTimes.map((timeOption) => (
                         <option key={timeOption} value={timeOption}>
                             {timeOption}

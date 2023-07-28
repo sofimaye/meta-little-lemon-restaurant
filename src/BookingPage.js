@@ -30,7 +30,6 @@ export default function BookingPage(){
 
     return (
         <div>
-            <h1>Table Booking App</h1>
             <BookingForm availableTimes={availableTimes} updateTimes={dispatch}/>
         </div>
     );
