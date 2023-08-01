@@ -9,7 +9,17 @@ export default function BookingForm({availableTimes, updateTimes}) {
     });
 
     useEffect(() => {
-        updateTimes(formData.date)
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 1);
+        const tomorrow = currentDate.toISOString().split('T')[0];
+
+        if(availableTimes.length === 0){
+            updateTimes(tomorrow);
+            setFormData((prevData) => ({
+                ...prevData,
+                date: tomorrow,
+            }));
+        }
     }, []);
 
     const handleDateSelected = (date) => {
@@ -44,7 +54,6 @@ export default function BookingForm({availableTimes, updateTimes}) {
                         handleDateSelected(e.target.value);
                     }}
                 />
-
                 <label htmlFor="res-time">Choose time</label>
                 <select id="res-time" data-testid="res-time" name="time" value={formData.time} onChange={handleChange}>
                     {availableTimes.map((timeOption) => (

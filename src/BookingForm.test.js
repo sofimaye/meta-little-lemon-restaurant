@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import BookingForm from './BookingForm';
 import BookingPage from "./BookingPage";
 
 test('Renders the BookingForm heading', () => {
