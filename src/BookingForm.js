@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import {submitAPI} from "./utils/fakeAPI";
+import {useNavigate} from "react-router-dom";
 
 export default function BookingForm({availableTimes, updateTimes}) {
     const [formData, setFormData] = useState({
@@ -7,6 +9,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
         guests: 1,
         occasion: 'birthday',
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const currentDate = new Date();
@@ -36,6 +39,10 @@ export default function BookingForm({availableTimes, updateTimes}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const success = submitAPI(formData);
+        if (success){
+            navigate("/reservations/confirmation");
+        }
     };
 
     return (
@@ -74,20 +81,20 @@ export default function BookingForm({availableTimes, updateTimes}) {
                     onChange={handleChange}
                 />
 
-                <label htmlFor="occasion">Occasion</label>
-                <select
-                    id="occasion"
-                    name="occasion"
-                    value={formData.occasion}
-                    onChange={handleChange}
-                >
-                    <option>Birthday</option>
-                    <option>Anniversary</option>
-                    <option>Dinner</option>
-                    <option>Romantic dinner</option>
-                    <option>Lunch</option>
-                    <option>Other</option>
-                </select>
+                        <label htmlFor="occasion">Occasion</label>
+                        <select
+                            id="occasion"
+                            name="occasion"
+                            value={formData.occasion}
+                            onChange={handleChange}
+                        >
+                            <option>Birthday</option>
+                            <option>Anniversary</option>
+                            <option>Dinner</option>
+                            <option>Romantic dinner</option>
+                            <option>Lunch</option>
+                            <option>Other</option>
+                        </select>
 
                 <label htmlFor="submit">Make your reservation</label>
                 <input type="submit" value="Submit" />

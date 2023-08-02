@@ -9,8 +9,8 @@ export default function BookingPage(){
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
     return (
-        <div>
+        <>
             <BookingForm availableTimes={availableTimes} updateTimes={dispatch}/>
-        </div>
+        </>
     );
 }
