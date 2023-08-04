@@ -2,13 +2,18 @@ import React, {useEffect, useState} from "react";
 import {submitAPI} from "./utils/fakeAPI";
 import {useNavigate} from "react-router-dom";
 
+// todo: form validation in handleChange
 export default function BookingForm({availableTimes, updateTimes}) {
     const [formData, setFormData] = useState({
+        userName: "",
+        email: "",
+        phone: "",
         date: new Date().toISOString().split('T')[0],
         time: '12:00',
         guests: 1,
         occasion: 'birthday',
     });
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,16 +44,76 @@ export default function BookingForm({availableTimes, updateTimes}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const success = submitAPI(formData);
-        if (success){
-            navigate("/reservations/confirmation");
+        const validationErrors = validateForm(formData);
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
+            console.log('Form data submitted:', formData);
+            // sending data to server can be handled here
+            const success = submitAPI(formData);
+            if (success){
+                navigate("/reservations/confirmation");
+            }
         }
     };
+
+    const validateForm = (data) => {
+        const errors = {};
+        if(isValidPhoneNumber(data.phone) === false){
+            errors.phone = 'Invalid phone number';
+            console.log("ERRORS PHONE: ", errors.phone)
+        }
+        return errors
+    }
+
+    const isValidPhoneNumber = (phoneNumber) => {
+        // Basic validation for a 10-digit phone number
+        const phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phoneNumber);
+    };
+
+    // if there are any errors in the form
+    const hasErrors = Object.keys(errors).length > 0;
+    console.log("ERRORS: ", hasErrors)
 
     return (
         <div className="form">
             <h1 id="formTitle">Book now</h1>
             <form className="booking-form" onSubmit={handleSubmit}>
+                <>
+                <label htmlFor="res-name">First name</label>
+                <input type="text"
+                       id="res-name"
+                       name="userName"
+                       value={formData.userName}
+                       onChange={handleChange}
+                       placeholder="Enter your username"
+                       required/>
+                {errors.userName && <div className="error">{errors.userName}</div>}
+                </>
+                <label htmlFor="res-email">Email</label>
+                <input type="email"
+                       id="res-email"
+                       name="email"
+                       value={formData.email}
+                       onChange={handleChange}
+                       placeholder="Enter your email"
+                       required
+
+                />
+                <>
+                <label htmlFor="res-phone">Phone Number</label>
+                <input type="tel"
+                       id="res-phone"
+                       name="phone"
+                       value={formData.phone}
+                       onChange={handleChange}
+                       placeholder="Enter your phone number"
+                       required
+                />
+                {errors.phone && <div className="error">{errors.phone}</div>}
+                </>
+
                 <label htmlFor="res-date">Choose date</label>
                 <input
                     type="date"
@@ -97,7 +162,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                         </select>
 
                 <label htmlFor="submit">Make your reservation</label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" disabled={hasErrors}/>
             </form>
         </div>
     );
