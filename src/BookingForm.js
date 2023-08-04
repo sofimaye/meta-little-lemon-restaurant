@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {submitAPI} from "./utils/fakeAPI";
 import {useNavigate} from "react-router-dom";
 
-// todo: form validation in handleChange
+
 export default function BookingForm({availableTimes, updateTimes}) {
     const [formData, setFormData] = useState({
         userName: "",
@@ -71,10 +71,6 @@ export default function BookingForm({availableTimes, updateTimes}) {
         const phoneRegex = /^\d{10}$/;
         return phoneRegex.test(phoneNumber);
     };
-
-    // if there are any errors in the form
-    const hasErrors = Object.keys(errors).length > 0;
-    console.log("ERRORS: ", hasErrors)
 
     return (
         <div className="form">
@@ -162,7 +158,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                         </select>
 
                 <label htmlFor="submit">Make your reservation</label>
-                <input type="submit" value="Submit" disabled={hasErrors}/>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
     );
