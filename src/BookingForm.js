@@ -48,7 +48,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            console.log('Form data submitted:', formData);
+            // console.log('Form data submitted:', formData);
             // sending data to server can be handled here
             const success = submitAPI(formData);
             if (success){
@@ -61,7 +61,6 @@ export default function BookingForm({availableTimes, updateTimes}) {
         const errors = {};
         if(isValidDateValue(data.date) === false || data.date === ""){
             errors.date = 'Invalid date';
-            console.log("Date: ", data.date);
         }
         if(isValidNumberOfGuests(data.guests) === false || data.guests === ""){
             errors.guests = 'Invalid number of guests.';
@@ -69,7 +68,6 @@ export default function BookingForm({availableTimes, updateTimes}) {
         if(isValidPhoneNumber(data.phone) === false || data.phone === ""){
             errors.phone = 'Invalid phone number';
         }
-        console.log("Errors: ", errors)
         return errors
     }
 
