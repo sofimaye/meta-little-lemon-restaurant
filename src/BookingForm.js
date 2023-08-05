@@ -59,10 +59,17 @@ export default function BookingForm({availableTimes, updateTimes}) {
 
     const validateForm = (data) => {
         const errors = {};
-        if(isValidPhoneNumber(data.phone) === false){
-            errors.phone = 'Invalid phone number';
-            console.log("ERRORS PHONE: ", errors.phone)
+        if(isValidDateValue(data.date) === false || data.date === ""){
+            errors.date = 'Invalid date';
+            console.log("Date: ", data.date);
         }
+        if(isValidNumberOfGuests(data.guests) === false || data.guests === ""){
+            errors.guests = 'Invalid number of guests.';
+        }
+        if(isValidPhoneNumber(data.phone) === false || data.phone === ""){
+            errors.phone = 'Invalid phone number';
+        }
+        console.log("Errors: ", errors)
         return errors
     }
 
@@ -71,6 +78,16 @@ export default function BookingForm({availableTimes, updateTimes}) {
         const phoneRegex = /^\d{10}$/;
         return phoneRegex.test(phoneNumber);
     };
+
+    const isValidDateValue = (date) => {
+        const dateRegex = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/
+        return dateRegex.test(date)
+    }
+
+    const isValidNumberOfGuests = (numberOfGuests) => {
+        const guestsRegex = /^(?:[1-9]|10)$/;
+        return guestsRegex.test(numberOfGuests)
+    }
 
     return (
         <div className="form">
