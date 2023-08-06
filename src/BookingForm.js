@@ -95,6 +95,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                 <label htmlFor="res-name">First name</label>
                 <input type="text"
                        id="res-name"
+                       data-testid="res-name"
                        name="userName"
                        value={formData.userName}
                        onChange={handleChange}
@@ -105,6 +106,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                 <label htmlFor="res-email">Email</label>
                 <input type="email"
                        id="res-email"
+                       data-testid="res-email"
                        name="email"
                        value={formData.email}
                        onChange={handleChange}
@@ -116,6 +118,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                 <label htmlFor="res-phone">Phone Number</label>
                 <input type="tel"
                        id="res-phone"
+                       data-testid="res-phone"
                        name="phone"
                        value={formData.phone}
                        onChange={handleChange}
@@ -152,6 +155,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                     min="1"
                     max="10"
                     id="guests"
+                    data-testid="guests"
                     name="guests"
                     value={formData.guests}
                     onChange={handleChange}
@@ -160,6 +164,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                         <label htmlFor="occasion">Occasion</label>
                         <select
                             id="occasion"
+                            data-testid="occasion"
                             name="occasion"
                             value={formData.occasion}
                             onChange={handleChange}

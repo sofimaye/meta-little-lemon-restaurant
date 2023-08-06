@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import BookingPage from "./BookingPage";
 import {MemoryRouter} from "react-router-dom";
+import {isValidDateValue} from "@testing-library/user-event/dist/utils";
 
 test('check initializeTimes function', () => {
     render(
@@ -73,7 +75,6 @@ describe('BookingForm', () => {
         expect(timeSelect).toHaveAttribute('id', 'res-time');
         expect(timeSelect).toHaveAttribute('data-testid', 'res-time');
         expect(timeSelect).toHaveAttribute('name', 'time');
-        // expect(timeSelect).toHaveAttribute('value');
         expect(screen.getByDisplayValue(/1[2-9]:\d\d|20:00|21:00/)).toBeInTheDocument();
 
         // Number of guests input
@@ -87,3 +88,84 @@ describe('BookingForm', () => {
         expect(guestsInput).toHaveAttribute('value');
     });
 });
+
+//a unit test for both valid and invalid states to ensure good test coverage of code
+
+describe('Testing valid states of inputs after initial load', () => {
+    test('Initial page load', () => {
+        render(<MemoryRouter>
+            <BookingPage/>
+        </MemoryRouter>);
+
+        // First name input
+        const firstNameInput = screen.getByTestId("res-name")
+        expect(firstNameInput.value).toMatch("");
+
+        // Email input
+        const emailInput = screen.getByTestId("res-email");
+        expect(emailInput.value).toMatch("");
+
+        // Phone input
+        const phoneInput = screen.getByTestId("res-phone");
+        expect(phoneInput.value).toMatch("");
+
+        // Date input
+        const dateInput = screen.getByTestId('res-date');
+        // Check if the value of the date input matches the expected format 'yyyy-mm-dd'
+        const dateRegex = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+        expect(dateInput.value).toMatch(dateRegex)
+
+        // Time select
+        const timeSelect = screen.getByTestId('res-time');
+        const timeRegex = /1[2-9]:\d\d|20:00|21:00/;
+        expect(timeSelect.value).toMatch(timeRegex);
+
+        // Number of guests input
+        const guestsInput = screen.getByTestId('guests');
+        const guestsRegex = /[1-9]|10/;
+        expect(guestsInput.value).toMatch(guestsRegex);
+    });
+});
+
+
+
+describe('Testing valid states of inputs after the user activities', () => {
+    test('User enters valid inputs', () => {
+        render(<MemoryRouter>
+            <BookingPage/>
+        </MemoryRouter>);
+
+        // First name input
+        const firstNameInput = screen.getByTestId("res-name");
+        userEvent.type(firstNameInput, "John");
+        expect(firstNameInput).toHaveValue("John");
+
+        // Email input
+        const emailInput = screen.getByTestId("res-email");
+        userEvent.type(emailInput, "john@example.com");
+        expect(emailInput).toHaveValue("john@example.com");
+
+        // Phone input
+        const phoneInput = screen.getByTestId("res-phone");
+        userEvent.type(phoneInput, "123456789");
+        expect(phoneInput).toHaveValue("123456789");
+
+        // Date input
+        const dateInput = screen.getByTestId('res-date');
+        userEvent.type(dateInput, "2023-08-07");
+        expect(dateInput).toHaveValue("2023-08-07");
+
+        // Time select
+        const timeSelect = screen.getByTestId('res-time');
+        userEvent.type(timeSelect, "12:00");
+        expect(timeSelect).toHaveValue("12:00");
+
+        // Number of guests input
+        const guestsInput = screen.getByTestId('guests');
+        userEvent.clear(guestsInput)
+        userEvent.type(guestsInput, "1");
+        expect(Number(guestsInput.value)).toBe(1);
+    });
+});
+
+
