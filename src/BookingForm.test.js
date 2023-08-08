@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import {render, screen, act, waitFor} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BookingPage from "./BookingPage";
 import {MemoryRouter} from "react-router-dom";
-import {isValidDateValue} from "@testing-library/user-event/dist/utils";
+import BookingForm from "./BookingForm";
+import fetchAPI from "./utils/fakeAPI";
 
 test('check initializeTimes function', () => {
     render(
@@ -128,44 +129,92 @@ describe('Testing valid states of inputs after initial load', () => {
 });
 
 
-
 describe('Testing valid states of inputs after the user activities', () => {
-    test('User enters valid inputs', () => {
-        render(<MemoryRouter>
-            <BookingPage/>
-        </MemoryRouter>);
+    const enterValidFormData = () => {
+        //First name
+        const firstNameInput = screen.getByTestId('res-name');
+        userEvent.clear(firstNameInput);
+        userEvent.type(firstNameInput, 'John');
 
-        // First name input
-        const firstNameInput = screen.getByTestId("res-name");
-        userEvent.type(firstNameInput, "John");
-        expect(firstNameInput).toHaveValue("John");
+        //Email
+        const emailInput = screen.getByTestId('res-email');
+        userEvent.clear(emailInput);
+        userEvent.type(emailInput, 'john@example.com');
 
-        // Email input
-        const emailInput = screen.getByTestId("res-email");
-        userEvent.type(emailInput, "john@example.com");
-        expect(emailInput).toHaveValue("john@example.com");
+        //Phone Number
+        const phoneInput = screen.getByTestId('res-phone');
+        userEvent.clear(phoneInput);
+        userEvent.type(phoneInput, "0123456789");
 
-        // Phone input
-        const phoneInput = screen.getByTestId("res-phone");
-        userEvent.type(phoneInput, "123456789");
-        expect(phoneInput).toHaveValue("123456789");
-
-        // Date input
+        //Date
         const dateInput = screen.getByTestId('res-date');
-        userEvent.type(dateInput, "2023-08-07");
-        expect(dateInput).toHaveValue("2023-08-07");
+        const today = new Date().toISOString().split('T')[0];
+        userEvent.clear(dateInput);
+        userEvent.type(dateInput, today);
 
-        // Time select
-        const timeSelect = screen.getByTestId('res-time');
-        userEvent.type(timeSelect, "12:00");
-        expect(timeSelect).toHaveValue("12:00");
+        //Time
+        const timeInput = screen.getByTestId('res-time');
+        timeInput.value = '';
+        userEvent.type(timeInput, '12:00');
 
-        // Number of guests input
+        // Number of guests
         const guestsInput = screen.getByTestId('guests');
-        userEvent.clear(guestsInput)
-        userEvent.type(guestsInput, "1");
-        expect(Number(guestsInput.value)).toBe(1);
+        userEvent.clear(guestsInput);
+        userEvent.type(guestsInput, '1');
+    };
+
+    // form button submit
+    const submit = () => {
+        const submit = screen.getByTestId('submit');
+        userEvent.click(submit);
+    }
+
+    //set input (valid or invalid)
+    const setInput = (testId, inputText) => {
+        const input = screen.getByTestId(testId);
+        userEvent.clear(input);
+        userEvent.type(input, inputText);
+    }
+
+    test('Invalid phone number submit', async () => {
+        // Mock submitAPI to always return success
+        const mockSubmitAPI = jest.fn().mockReturnValue(true);
+        render(
+            <MemoryRouter>
+                <BookingForm availableTimes={[]} updateTimes={() => {}} submitAPI={mockSubmitAPI} />
+            </MemoryRouter>
+        );
+
+        // all valid data
+        await act(async () => {
+            enterValidFormData();
+            // set invalid phone
+            setInput('res-phone',"+380638279092" )
+            submit();
+        });
+
+        // Make sure submitAPI was not called
+        expect(mockSubmitAPI).toHaveBeenCalledTimes(0);
+        const errorMessageElement = screen.getByTestId('res-phone-error');
+        expect(errorMessageElement.textContent).toBe('Invalid phone number');
+    });
+
+
+    test('Submit valid form', async () => {
+        // Mock submitAPI to always return success
+        const mockSubmitAPI = jest.fn().mockReturnValue(true);
+        render(
+            <MemoryRouter>
+                <BookingForm availableTimes={[]} updateTimes={() => {}} submitAPI={mockSubmitAPI} />
+            </MemoryRouter>
+        );
+
+        // all valid data
+        await act(async () => {
+            enterValidFormData();
+            submit();
+        });
+
+        expect(mockSubmitAPI).toHaveBeenCalledTimes(1);
     });
 });
-
-

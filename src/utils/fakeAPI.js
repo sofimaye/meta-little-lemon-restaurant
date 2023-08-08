@@ -11,9 +11,7 @@ const fetchAPI = date => {
     }
 }
 
-const submitAPI = formData => true;
 
 export {
-    fetchAPI,
-    submitAPI
+    fetchAPI
 };

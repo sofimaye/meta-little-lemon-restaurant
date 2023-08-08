@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {submitAPI} from "./utils/fakeAPI";
 import {useNavigate} from "react-router-dom";
 
 
-export default function BookingForm({availableTimes, updateTimes}) {
+export default function BookingForm({availableTimes, updateTimes, submitAPI}) {
     const [formData, setFormData] = useState({
         userName: "",
         email: "",
@@ -48,7 +47,6 @@ export default function BookingForm({availableTimes, updateTimes}) {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            // console.log('Form data submitted:', formData);
             // sending data to server can be handled here
             const success = submitAPI(formData);
             if (success){
@@ -59,16 +57,23 @@ export default function BookingForm({availableTimes, updateTimes}) {
 
     const validateForm = (data) => {
         const errors = {};
-        if(isValidDateValue(data.date) === false || data.date === ""){
+        if(isValidUserName(data.userName) === false){
+            errors.userName = "Invalid user name";
+        }
+        if(isValidDateValue(data.date) === false){
             errors.date = 'Invalid date';
         }
-        if(isValidNumberOfGuests(data.guests) === false || data.guests === ""){
+        if(isValidNumberOfGuests(data.guests) === false){
             errors.guests = 'Invalid number of guests.';
         }
-        if(isValidPhoneNumber(data.phone) === false || data.phone === ""){
+        if(isValidPhoneNumber(data.phone) === false){
             errors.phone = 'Invalid phone number';
         }
         return errors
+    }
+    const isValidUserName = (userName) => {
+        const userNameRegex = /^[a-zA-Z]{1,30}$/;
+        return userNameRegex.test(userName)
     }
 
     const isValidPhoneNumber = (phoneNumber) => {
@@ -125,7 +130,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                        placeholder="Enter your phone number"
                        required
                 />
-                {errors.phone && <div className="error">{errors.phone}</div>}
+                {errors.phone && <div className="error" data-testid='res-phone-error'>{errors.phone}</div>}
                 </>
 
                 <label htmlFor="res-date">Choose date</label>
@@ -178,7 +183,7 @@ export default function BookingForm({availableTimes, updateTimes}) {
                         </select>
 
                 <label htmlFor="submit">Make your reservation</label>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" data-testid="submit"/>
             </form>
         </div>
     );
