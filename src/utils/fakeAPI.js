@@ -11,7 +11,6 @@ const fetchAPI = date => {
     }
 }
 
-
 export {
     fetchAPI
 };

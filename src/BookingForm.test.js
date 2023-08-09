@@ -1,11 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from "react";
-import {render, screen, act, waitFor} from "@testing-library/react";
+import {render, screen, act} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BookingPage from "./BookingPage";
 import {MemoryRouter} from "react-router-dom";
 import BookingForm from "./BookingForm";
-import fetchAPI from "./utils/fakeAPI";
 
 test('check initializeTimes function', () => {
     render(
@@ -129,7 +128,7 @@ describe('Testing valid states of inputs after initial load', () => {
 });
 
 
-describe('Testing valid states of inputs after the user activities', () => {
+describe('Testing valid and invalid states of inputs after the user activities', () => {
     const enterValidFormData = () => {
         //First name
         const firstNameInput = screen.getByTestId('res-name');
@@ -158,7 +157,7 @@ describe('Testing valid states of inputs after the user activities', () => {
         userEvent.type(timeInput, '12:00');
 
         // Number of guests
-        const guestsInput = screen.getByTestId('guests');
+        const guestsInput = screen.getByTestId('res-guests');
         userEvent.clear(guestsInput);
         userEvent.type(guestsInput, '1');
     };
@@ -193,13 +192,76 @@ describe('Testing valid states of inputs after the user activities', () => {
             submit();
         });
 
-        // Make sure submitAPI was not called
+        // Making sure submitAPI was not called
         expect(mockSubmitAPI).toHaveBeenCalledTimes(0);
         const errorMessageElement = screen.getByTestId('res-phone-error');
         expect(errorMessageElement.textContent).toBe('Invalid phone number');
     });
 
+    test('Invalid user name submit', async () => {
+        // Mock submitAPI to always return success
+        const mockSubmitAPI = jest.fn().mockReturnValue(true);
+        render(
+            <MemoryRouter>
+                <BookingForm availableTimes={[]} updateTimes={() => {}} submitAPI={mockSubmitAPI} />
+            </MemoryRouter>
+        );
 
+        await act(async () => {
+            enterValidFormData();
+            setInput('res-name',"77777" )
+            submit();
+        });
+
+        // Making sure submitAPI was not called
+        expect(mockSubmitAPI).toHaveBeenCalledTimes(0);
+        const errorMessageElement = screen.getByTestId('res-name-error');
+        expect(errorMessageElement.textContent).toBe("Invalid user name");
+    });
+
+    test('Invalid date submit', async () => {
+        // Mock submitAPI to always return success
+        const mockSubmitAPI = jest.fn().mockReturnValue(true);
+        render(
+            <MemoryRouter>
+                <BookingForm availableTimes={[]} updateTimes={() => {}} submitAPI={mockSubmitAPI} />
+            </MemoryRouter>
+        );
+
+        await act(async () => {
+            enterValidFormData();
+            setInput('res-date',"07-08-2023" )
+            submit();
+        });
+
+        // Making sure submitAPI was not called
+        expect(mockSubmitAPI).toHaveBeenCalledTimes(0);
+        const errorMessageElement = screen.getByTestId('res-date-error');
+        expect(errorMessageElement.textContent).toBe("Invalid date");
+    });
+
+    test('Invalid number of guests', async () => {
+        // Mock submitAPI to always return success
+        const mockSubmitAPI = jest.fn().mockReturnValue(true);
+        render(
+            <MemoryRouter>
+                <BookingForm availableTimes={[]} updateTimes={() => {}} submitAPI={mockSubmitAPI} />
+            </MemoryRouter>
+        );
+
+        await act(async () => {
+            enterValidFormData();
+            setInput('res-guests',"11" )
+            submit();
+        });
+
+        // Making sure submitAPI was not called
+        expect(mockSubmitAPI).toHaveBeenCalledTimes(0);
+        const errorMessageElement = screen.getByTestId('res-guests-error');
+        expect(errorMessageElement.textContent).toBe("Invalid number of guests");
+    });
+
+    //all valid inputs testing
     test('Submit valid form', async () => {
         // Mock submitAPI to always return success
         const mockSubmitAPI = jest.fn().mockReturnValue(true);
@@ -209,12 +271,10 @@ describe('Testing valid states of inputs after the user activities', () => {
             </MemoryRouter>
         );
 
-        // all valid data
         await act(async () => {
             enterValidFormData();
             submit();
         });
-
         expect(mockSubmitAPI).toHaveBeenCalledTimes(1);
     });
 });

@@ -10,7 +10,7 @@ function Home() {
                         <h1>Little Lemon</h1>
                         <h2>Chicago</h2>
                         <p>Homemade food from organic ingredients from local farm</p>
-                        <Link to="/reservations">Reserve a table</Link>
+                        <Link className="yellow-button" to="/reservations">Reserve a table</Link>
                     </aside>
                     <div className="image-wrapper">
                         <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
@@ -20,7 +20,7 @@ function Home() {
                 <section id="specials-placeholder">
                     <div className="header-container">
                     <h2 id="specials">This week specials!</h2>
-                    <button className="order-delivery" >order online</button>
+                    <button className="yellow-button">order online</button>
                     </div>
 
                     <div className="articles-container">
@@ -30,7 +30,7 @@ function Home() {
                             <figcaption>Greek salad $12.99</figcaption>
                         </figure>
                         <p>The famous greek salad...</p>
-                        <Link className="order-delivery" to="#">Order a delivery...</Link>
+                        <Link className="yellow-button" to="#">Order a delivery...</Link>
                     </article>
 
                     <article>
@@ -39,7 +39,7 @@ function Home() {
                             <figcaption>Bruchetta $5.99</figcaption>
                         </figure>
                         <p>Our bruchetta is made from grilled bread...</p>
-                        <Link className="order-delivery" to="#">Order a delivery...</Link>
+                        <Link className="yellow-button" to="#">Order a delivery...</Link>
                     </article>
 
                     <article>
@@ -48,7 +48,7 @@ function Home() {
                             <figcaption>Greek salad $12.99</figcaption>
                         </figure>
                         <p>This comes straight from grandma's recipe book..</p>
-                        <Link className="order-delivery" to="#">Order a delivery...</Link>
+                        <Link className="yellow-button" to="#">Order a delivery...</Link>
                     </article>
                     </div>
                 </section>

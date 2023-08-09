@@ -1,14 +1,56 @@
 .form {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 50vh;
     width: 100%;
+    margin-bottom: 20px;
 }
+
+/* Style for the booking form */
 .booking-form {
-    display: grid;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 30%;
+}
+
+.booking-form label {
+    flex: 1; /* labels take as much vertical space as needed */
+    display: flex;
+    align-items: flex-end;
+    font-weight: bold;
+    font-variant: all-small-caps;
+}
+
+.booking-form input,
+.booking-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.booking-form label[for="submit"] {
+    margin-bottom: 10px;
     justify-content: center;
-    align-items: center;
-    max-width: 30vw;
-    gap: 20px;
+}
+
+.booking-form .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: auto; /* Push it to the bottom */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .booking-form {
+        margin-top: 20px;
+        max-width: 100%;
+    }
 }

@@ -16,10 +16,12 @@
 h1{
   font-size: 40pt;
   color: #F4CE14;
+  font-variant: all-small-caps
 }
 
 h2, p + h2{
   color: white;
+  font-variant: all-small-caps
 }
 
 /*navbar*/
@@ -32,6 +34,9 @@ header{
 .navlink {
   color: black; /* Change this to the desired color (e.g., blue) */
   text-decoration: none;
+  font-size: large;
+  font-variant: all-petite-caps;
+  font-weight: bold;
 }
 
 #logo {
@@ -67,13 +72,6 @@ header{
   justify-content: center; /* Center items vertically on the y-axis */
   height: 100%; /* Take full available height of parent */
   width: auto; /* Maintain aspect ratio */
-}
-
-.about-little-lemon button {
-  max-width: 50%;
-  max-height: 50%;
-  background-color: #F4CE14;
-  border-radius: 4px;
 }
 
 .image-wrapper {
@@ -147,8 +145,11 @@ p {
 }
 
 /* Button Styles */
-.order-delivery {
-  display: inline-block;
+.yellow-button {
+  display: inline-flex; /* Allow the button to adjust its width based on content */
+  align-items: center; /* Center the content vertically */
+  justify-content: center;
+  max-width: 50%;
   padding: 8px 12px;
   background-color: #F4CE14;
   color: #fff;
@@ -156,7 +157,6 @@ p {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
 }
 
 #photo-placeholder{
@@ -167,6 +167,9 @@ p {
 footer {
   height: 15vh;
   display: flex;
+  font-size: large;
+  font-variant: all-small-caps;
+  font-weight: bold;
   align-items: center; /* Vertically center the content */
   justify-content: space-between; /* Distribute the content with equal spacing */
   background-color: grey; /* Add a background color to the footer */
@@ -183,6 +186,11 @@ footer a {
   margin-right: 10px; /* Adjust the spacing between the links */
 }
 
+.error{
+  color: red;
+  font-variant: all-small-caps;
+}
+
 /* Media Queries for Responsive Layout */
 @media screen and (max-width: 768px) {
   #specials-placeholder {
@@ -195,7 +203,7 @@ footer a {
   }
 
   /* Adjust button styles for smaller screens */
-  button, .order-delivery {
+  .yellow-button{
     font-size: 14px;
     padding: 6px 10px;
   }
