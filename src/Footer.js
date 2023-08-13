@@ -3,7 +3,7 @@ import React from "react";
 function Footer(){
     return(
         <footer>
-            <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
+            <img src="/photos/footer_logo.png" alt="restaurant food"/>
             <address className="contacts">
                 <ul>
                     <li><a href="mailto: littlelemon@gmail.com">littlelemon@gmail.com</a></li>

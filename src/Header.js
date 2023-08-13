@@ -6,13 +6,37 @@ function Header(){
             <header>
                 <img id="logo" src="/photos/Logo.svg" alt="logo little lemon"/>
                 <nav id="nav-links">
-                    <ul>
-                        <NavLink className="navlink" to="/" activeClassName="active">Home</NavLink>
-                        <NavLink className="navlink" to="/about">About</NavLink>
-                        <NavLink className="navlink" to="/menu">Menu</NavLink>
-                        <NavLink className="navlink" to="/reservations">Reservations</NavLink>
-                        <NavLink className="navlink" to="/order">Order online</NavLink>
-                        <NavLink className="navlink" to="/login">Login</NavLink>
+                    <ul role="navigation">
+                        <li>
+                            <NavLink className="navlink" to="/" activeClassName="active" aria-label="Home">
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navlink" to="/about" activeClassName="active" aria-label="About">
+                                About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navlink" to="/menu" activeClassName="active" aria-label="Menu">
+                                Menu
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navlink" to="/reservations" activeClassName="active" aria-label="Reservations">
+                                Reservations
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navlink" to="/order" activeClassName="active" aria-label="Order Online">
+                                Order online
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navlink" to="/login" activeClassName="active" aria-label="Login">
+                                Login
+                            </NavLink>
+                        </li>
                     </ul>
                 </nav>
             </header>

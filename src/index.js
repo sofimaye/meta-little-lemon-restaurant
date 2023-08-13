@@ -9,6 +9,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
+import UnderConstruction from "./UnderConstruction";
+import './UnderConstruction.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +21,10 @@ root.render(
                 <Route path="/" element={<Home/>}/>
                 <Route path="/reservations" element={<BookingPage/>}/>
                 <Route path="/reservations/confirmation" element={<ConfirmedBooking/>}/>
+                <Route path="/about" element={<UnderConstruction/>}/>
+                <Route path="/menu" element={<UnderConstruction/>}/>
+                <Route path="/order" element={<UnderConstruction/>}/>
+                <Route path="/login" element={<UnderConstruction/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>

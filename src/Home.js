@@ -4,26 +4,26 @@ import {Link} from "react-router-dom";
 
 function Home() {
     return (
-            <main>
-                <section id="intro-placeholder">
-                    <aside className="about-little-lemon">
-                        <h1>Little Lemon</h1>
-                        <h2>Chicago</h2>
-                        <p>Homemade food from organic ingredients from local farm</p>
-                        <Link className="yellow-button" to="/reservations">Reserve a table</Link>
-                    </aside>
-                    <div className="image-wrapper">
-                        <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
-                    </div>
-                </section>
+        <main>
+            <section id="intro-placeholder">
+                <aside className="about-little-lemon">
+                    <h1>Little Lemon</h1>
+                    <h2>Chicago</h2>
+                    <p>Homemade food from organic ingredients from local farm</p>
+                    <Link className="yellow-button" to="/reservations">Reserve a table</Link>
+                </aside>
+                <div className="image-wrapper-about">
+                    <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
+                </div>
+            </section>
 
-                <section id="specials-placeholder">
-                    <div className="header-container">
+            <section id="specials-placeholder">
+                <div className="header-container">
                     <h2 id="specials">This week specials!</h2>
                     <button className="yellow-button">order online</button>
-                    </div>
+                </div>
 
-                    <div className="articles-container">
+                <div className="articles-container">
                     <article>
                         <figure>
                             <img src="/photos/greek salad.jpg" alt="greek salad"/>
@@ -50,20 +50,20 @@ function Home() {
                         <p>This comes straight from grandma's recipe book..</p>
                         <Link className="yellow-button" to="#">Order a delivery...</Link>
                     </article>
-                    </div>
-                </section>
-                <section id="photo-placeholder">
-                    <aside>
-                        <h1>Little Lemon</h1>
-                        <h2>Chicago</h2>
-                        <p>We cook nice dishes for all family</p>
-                    </aside>
-                    <div className="image-wrapper">
+                </div>
+            </section>
+            <section id="photo-placeholder">
+                <aside>
+                    <h1>Little Lemon</h1>
+                    <h2>Chicago</h2>
+                    <p>We cook nice dishes for all family</p>
+                </aside>
+                <div className="image-wrapper">
+                    <img src="/photos/Mario%20and%20Adrian%20b.jpg" alt="restaurant food"/>
                     <img src="/photos/Mario and Adrian A.jpg" alt="our cookers"/>
-                    <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
-                    </div>
-                </section>
-            </main>
+                </div>
+            </section>
+        </main>
     );
 }
 

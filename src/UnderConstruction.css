@@ -1,0 +1,40 @@
+.under-construction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+}
+.under-construction h2{
+   font-size: 40pt;
+    color: #555555;
+}
+
+.under-construction p{
+    font-size: 20pt;
+    color: #555555;
+}
+
+.image-container-construction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-container-construction img{
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .under-construction h2{
+        font-size: 20pt;
+    }
+
+}
+
+
+
+
