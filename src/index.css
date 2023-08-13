@@ -35,7 +35,6 @@ header{
   list-style: none;
 }
 
-
 .navlink {
   color: black;
   text-decoration: none;
@@ -218,6 +217,29 @@ footer a {
 
 /* Media Queries for Responsive Layout */
 @media screen and (max-width: 768px) {
+  header {
+    display: flex;
+    width: 100vw;
+  }
+  /*Mobile navbar open*/
+  #nav-links-mobile{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .hamburger-button {
+    padding: 5%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  #logo{
+    width: 70%;
+  }
+
   h1{
     font-size: 20pt;
   }

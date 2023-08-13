@@ -5,7 +5,7 @@ import './booking-form.css';
 import Home from './Home';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from "./Header";
+import { Header } from "./Header";
 import Footer from "./Footer";
 import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
