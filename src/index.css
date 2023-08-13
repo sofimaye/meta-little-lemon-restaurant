@@ -110,6 +110,7 @@ img {
 }
 
 .image-wrapper img:last-child {
+  z-index: 2;
   transform: translate(-20%, 10%);
 }
 
@@ -221,19 +222,16 @@ footer a {
     display: flex;
     width: 100vw;
   }
-  /*Mobile navbar open*/
-  #nav-links-mobile{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
 
   .hamburger-button {
     padding: 5%;
     border: none;
     background-color: white;
     cursor: pointer;
+  }
+  
+  .hamburger-button.open{
+    transform: rotate(45deg);
   }
 
   #logo{
@@ -242,6 +240,58 @@ footer a {
 
   h1{
     font-size: 20pt;
+  }
+
+  /*Mobile navbar open*/
+  #nav-links-mobile {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #ffffff; /* Optional: Set the background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  #nav-links-mobile ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  #nav-links-mobile ul li{
+    width: 100%;
+  }
+
+  .navlink-mobile {
+    font-size: 20pt;
+    font-variant: all-small-caps;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .navlink-mobile:hover {
+    background-color: #f0f0f0; /* Optional: Add a background color on hover */
+  }
+
+  /* Style for the active link */
+  .navlink-mobile.active {
+    background-color: #f0f0f0; /* Optional: Add a background color to the active link */
   }
 
   .about-little-lemon{
