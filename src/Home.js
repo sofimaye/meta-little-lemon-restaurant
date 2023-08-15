@@ -52,6 +52,76 @@ function Home() {
                     </article>
                 </div>
             </section>
+
+
+            {/*testimonials section*/}
+            <section className="testimonials">
+                <h2 className="what-our-customer-say">What Our Customers Say</h2>
+                <div className="testimonial-container">
+                <div className="testimonial">
+                    <blockquote>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                    </blockquote>
+                    <p className="testimonial-author">
+                        <span className="testimonial-name">John Doe</span>
+                        <span className="testimonial-rating" aria-label="Rated 5 out of 5 stars">
+        ★★★★★
+      </span>
+                    </p>
+                </div>
+
+                <div className="testimonial">
+                    <blockquote>
+                        <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
+                    </blockquote>
+                    <p className="testimonial-author">
+                        <span className="testimonial-name">Jane Smith</span>
+                        <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
+        ★★★★☆
+      </span>
+                    </p>
+                </div>
+
+                    <div className="testimonial">
+                        <blockquote>
+                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
+                        </blockquote>
+                        <p className="testimonial-author">
+                            <span className="testimonial-name">Henry Miller</span>
+                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
+        ★★★★☆
+      </span>
+                        </p>
+                    </div>
+
+                    <div className="testimonial">
+                        <blockquote>
+                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
+                        </blockquote>
+                        <p className="testimonial-author">
+                            <span className="testimonial-name">Salma Richardson</span>
+                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
+        ★★★★☆
+      </span>
+                        </p>
+                    </div>
+
+                    <div className="testimonial">
+                        <blockquote>
+                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
+                        </blockquote>
+                        <p className="testimonial-author">
+                            <span className="testimonial-name">Salma Richardson</span>
+                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
+        ★★★★☆
+      </span>
+                        </p>
+                    </div>
+
+
+                </div>
+            </section>
+            {/*________________________________________________________________________________*/}
             <section id="photo-placeholder">
                 <aside>
                     <h1>Little Lemon</h1>
