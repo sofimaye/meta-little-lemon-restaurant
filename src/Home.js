@@ -13,7 +13,7 @@ function Home() {
                     <Link className="yellow-button" to="/reservations">Reserve a table</Link>
                 </aside>
                 <div className="image-wrapper-about">
-                    <img src="/photos/restauranfood.jpg" alt="restaurant food"/>
+                    <img src="/photos/restauranfood.jpg" alt="restaurant food" loading="lazy"/>
                 </div>
             </section>
 
@@ -26,7 +26,7 @@ function Home() {
                 <div className="articles-container">
                     <article>
                         <figure>
-                            <img src="/photos/greek salad.jpg" alt="greek salad"/>
+                            <img src="/photos/greeksalad_sm.jpg" alt="greek salad" loading="lazy"/>
                             <figcaption>Greek salad $12.99</figcaption>
                         </figure>
                         <p>The famous greek salad...</p>
@@ -35,7 +35,7 @@ function Home() {
 
                     <article>
                         <figure>
-                            <img src="/photos/bruchetta.svg" alt="bruchetta"/>
+                            <img src="/photos/bruchetta.jpg" alt="bruchetta" loading="lazy"/>
                             <figcaption>Bruchetta $5.99</figcaption>
                         </figure>
                         <p>Our bruchetta is made from grilled bread...</p>
@@ -44,7 +44,7 @@ function Home() {
 
                     <article>
                         <figure>
-                            <img src="/photos/lemon dessert.jpg" alt="lemon dessert"/>
+                            <img src="/photos/lemon dessert.jpg" alt="lemon dessert" loading="lazy"/>
                             <figcaption>Greek salad $12.99</figcaption>
                         </figure>
                         <p>This comes straight from grandma's recipe book..</p>
@@ -129,8 +129,8 @@ function Home() {
                     <p>We cook nice dishes for all family</p>
                 </aside>
                 <div className="image-wrapper">
-                    <img src="/photos/Mario%20and%20Adrian%20b.jpg" alt="restaurant food"/>
-                    <img src="/photos/Mario and Adrian A.jpg" alt="our cookers"/>
+                    <img src="/photos/restaurant.jpg" alt="restaurant food" loading="lazy"/>
+                    <img src="/photos/Mario and Adrian A.jpg" alt="our cookers" loading="lazy"/>
                 </div>
             </section>
         </main>
