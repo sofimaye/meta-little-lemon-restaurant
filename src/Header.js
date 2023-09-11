@@ -10,11 +10,26 @@ const Hambutton = ({handleMenuToggle}) => {
                  alt="hamburger menu icon"/>
         </button>
     )
+};
+
+const Crossbutton = ({ handleMenuToggle }) => {
+    return(
+        <div className="cross-button-container">
+            <button className="cross-button"
+                onClick={handleMenuToggle}
+                aria-label="Cross Menu"
+            >
+               <img src="/photos/cross-23.svg" alt="cross button"/>
+            </button>
+        </div>
+    )
 }
 
 const VerticalMenu = ({handleMenuToggle}) => {
     return(
+        <>
         <nav id="nav-links-mobile">
+            <Crossbutton handleMenuToggle={handleMenuToggle}/>
             <ul role="navigation">
                 <li>
                     <NavLink className="navlink-mobile"
@@ -76,6 +91,7 @@ const VerticalMenu = ({handleMenuToggle}) => {
                 </li>
             </ul>
         </nav>
+        </>
     )
 }
 
