@@ -25,75 +25,37 @@ const Crossbutton = ({ handleMenuToggle }) => {
     )
 }
 
-const VerticalMenu = ({handleMenuToggle}) => {
-    return(
-        <>
-        <nav id="nav-links-mobile">
-            <Crossbutton handleMenuToggle={handleMenuToggle}/>
-            <ul role="navigation">
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/"
-                             activeClassName="active"
-                             aria-label="Home"
-                             onClick={handleMenuToggle} /* close menu when a link is clicked*/
-                    >
-                        Home
-                    </NavLink>
-                </li>
+const VerticalMenu = ({ handleMenuToggle }) => {
+    const navLinks = [
+        { to: "/", label: "Home" },
+        { to: "/about", label: "About" },
+        { to: "/menu", label: "Menu" },
+        { to: "/reservations", label: "Reservations" },
+        { to: "/order", label: "Order online" },
+        { to: "/login", label: "Login" },
+    ];
 
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/about"
-                             activeClassName="active"
-                             aria-label="About"
-                             onClick={handleMenuToggle}
-                    >
-                        About
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/menu"
-                             activeClassName="active"
-                             aria-label="Menu"
-                             onClick={handleMenuToggle}
-                    >
-                        Menu
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/reservations"
-                             activeClassName="active"
-                             aria-label="Reservations"
-                             onClick={handleMenuToggle}>
-                        Reservations
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/order"
-                             activeClassName="active"
-                             aria-label="Order Online"
-                             onClick={handleMenuToggle}>
-                        Order online
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink-mobile"
-                             to="/login"
-                             activeClassName="active"
-                             aria-label="Login"
-                             onClick={handleMenuToggle}>
-                        Login
-                    </NavLink>
-                </li>
+    return (
+        <nav id="nav-links-mobile">
+            <Crossbutton handleMenuToggle={handleMenuToggle} />
+            <ul role="navigation">
+                {navLinks.map((link) => (
+                    <li key={link.to}>
+                        <NavLink
+                            className="navlink-mobile"
+                            to={link.to}
+                            aria-label={link.label}
+                            onClick={handleMenuToggle}
+                        >
+                            {link.label}
+                        </NavLink>
+                    </li>
+                ))}
             </ul>
         </nav>
-        </>
-    )
-}
+    );
+};
+
 
 const MobileNavbar = () => {
     const [closed, setOpen] = useState(true);
@@ -108,43 +70,34 @@ const MobileNavbar = () => {
     )
 }
 const Navbar = () => {
-    return(
+    const navLinks = [
+        { to: "/", label: "Home" },
+        { to: "/about", label: "About" },
+        { to: "/menu", label: "Menu" },
+        { to: "/reservations", label: "Reservations" },
+        { to: "/order", label: "Order online" },
+        { to: "/login", label: "Login" },
+    ];
+
+    return (
         <nav id="nav-links">
             <ul role="navigation">
-                <li>
-                    <NavLink className="navlink" to="/" activeClassName="active" aria-label="Home">
-                        Home
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink" to="/about" activeClassName="active" aria-label="About">
-                        About
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink" to="/menu" activeClassName="active" aria-label="Menu">
-                        Menu
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink" to="/reservations" activeClassName="active" aria-label="Reservations">
-                        Reservations
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink" to="/order" activeClassName="active" aria-label="Order Online">
-                        Order online
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink className="navlink" to="/login" activeClassName="active" aria-label="Login">
-                        Login
-                    </NavLink>
-                </li>
+                {navLinks.map((link) => (
+                    <li key={link.to}>
+                        <NavLink
+                            className="navlink"
+                            to={link.to}
+                            aria-label={link.label}
+                        >
+                            {link.label}
+                        </NavLink>
+                    </li>
+                ))}
             </ul>
         </nav>
-    )
-}
+    );
+};
+
 
 
 function Header(){

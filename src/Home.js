@@ -1,138 +1,108 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+function Section({ id, children }) {
+    return <section id={id}>{children}</section>;
+}
+
+function Article({ src, alt, caption, description }) {
+    return (
+        <article>
+            <figure>
+                <img src={src} alt={alt} loading="lazy" />
+                <figcaption>{caption}</figcaption>
+            </figure>
+            <p>{description}</p>
+            <Link className="yellow-button" to="#">
+                Order a delivery...
+            </Link>
+        </article>
+    );
+}
+
+function Testimonial({ text, author, rating }) {
+    return (
+        <div className="testimonial">
+            <blockquote>
+                <p>{text}</p>
+            </blockquote>
+            <p className="testimonial-author">
+                <span className="testimonial-name">{author}</span>
+                <span className="testimonial-rating" aria-label={`Rated ${rating} out of 5 stars`}>
+          {rating}
+        </span>
+            </p>
+        </div>
+    );
+}
 
 function Home() {
     return (
         <main>
-            <section id="intro-placeholder">
+            <Section id="intro-placeholder">
                 <aside className="about-little-lemon">
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
-                    <p>Homemade food from organic ingredients from local farm</p>
-                    <Link className="yellow-button" to="/reservations">Reserve a table</Link>
+                    <p>Homemade food from organic ingredients from a local farm</p>
+                    <Link className="yellow-button" to="/reservations">
+                        Reserve a table
+                    </Link>
                 </aside>
                 <div className="image-wrapper-about">
-                    <img src="/photos/restauranfood.jpg" alt="restaurant food" loading="lazy"/>
+                    <img src="/photos/restauranfood.jpg" alt="restaurant food" />
                 </div>
-            </section>
+            </Section>
 
-            <section id="specials-placeholder">
+            <Section id="specials-placeholder">
                 <div className="header-container">
                     <h2 id="specials">This week specials!</h2>
                     <button className="yellow-button">order online</button>
                 </div>
 
                 <div className="articles-container">
-                    <article>
-                        <figure>
-                            <img src="/photos/greeksalad_sm.jpg" alt="greek salad" loading="lazy"/>
-                            <figcaption>Greek salad $12.99</figcaption>
-                        </figure>
-                        <p>The famous greek salad...</p>
-                        <Link className="yellow-button" to="#">Order a delivery...</Link>
-                    </article>
-
-                    <article>
-                        <figure>
-                            <img src="/photos/bruchetta.jpg" alt="bruchetta" loading="lazy"/>
-                            <figcaption>Bruchetta $5.99</figcaption>
-                        </figure>
-                        <p>Our bruchetta is made from grilled bread...</p>
-                        <Link className="yellow-button" to="#">Order a delivery...</Link>
-                    </article>
-
-                    <article>
-                        <figure>
-                            <img src="/photos/lemon dessert.jpg" alt="lemon dessert" loading="lazy"/>
-                            <figcaption>Greek salad $12.99</figcaption>
-                        </figure>
-                        <p>This comes straight from grandma's recipe book..</p>
-                        <Link className="yellow-button" to="#">Order a delivery...</Link>
-                    </article>
+                    <Article
+                        src="/photos/greeksalad_sm.jpg"
+                        alt="greek salad"
+                        caption="Greek salad $12.99"
+                        description="The famous Greek salad..."
+                    />
+                    <Article
+                        src="/photos/bruchetta.jpg"
+                        alt="bruchetta"
+                        caption="Bruchetta $5.99"
+                        description="Our bruchetta is made from grilled bread..."
+                    />
+                    <Article
+                        src="/photos/lemon dessert.jpg"
+                        alt="lemon dessert"
+                        caption="Greek salad $12.99"
+                        description="This comes straight from grandma's recipe book.."
+                    />
                 </div>
-            </section>
+            </Section>
 
-
-            {/*testimonials section*/}
-            <section className="testimonials">
+            <Section id="testimonials-placeholder">
                 <h2 className="what-our-customer-say">What Our Customers Say</h2>
                 <div className="testimonial-container">
-                <div className="testimonial">
-                    <blockquote>
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
-                    </blockquote>
-                    <p className="testimonial-author">
-                        <span className="testimonial-name">John Doe</span>
-                        <span className="testimonial-rating" aria-label="Rated 5 out of 5 stars">
-        ★★★★★
-      </span>
-                    </p>
+                    <Testimonial text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." author="John Doe" rating="★★★★★" />
+                    <Testimonial text="Vivamus in turpis in enim mollis iaculis eu vel lorem." author="Jane Smith" rating="★★★★☆" />
+                    <Testimonial text="Vivamus in turpis in enim mollis iaculis eu vel lorem." author="Henry Miller" rating="★★★★☆" />
+                    <Testimonial text="Vivamus in turpis in enim mollis iaculis eu vel lorem." author="Salma Richardson" rating="★★★★☆" />
+                    <Testimonial text="Vivamus in turpis in enim mollis iaculis eu vel lorem." author="Salma Richardson" rating="★★★★☆" />
                 </div>
+            </Section>
 
-                <div className="testimonial">
-                    <blockquote>
-                        <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
-                    </blockquote>
-                    <p className="testimonial-author">
-                        <span className="testimonial-name">Jane Smith</span>
-                        <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
-        ★★★★☆
-      </span>
-                    </p>
-                </div>
-
-                    <div className="testimonial">
-                        <blockquote>
-                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
-                        </blockquote>
-                        <p className="testimonial-author">
-                            <span className="testimonial-name">Henry Miller</span>
-                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
-        ★★★★☆
-      </span>
-                        </p>
-                    </div>
-
-                    <div className="testimonial">
-                        <blockquote>
-                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
-                        </blockquote>
-                        <p className="testimonial-author">
-                            <span className="testimonial-name">Salma Richardson</span>
-                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
-        ★★★★☆
-      </span>
-                        </p>
-                    </div>
-
-                    <div className="testimonial">
-                        <blockquote>
-                            <p>"Vivamus in turpis in enim mollis iaculis eu vel lorem."</p>
-                        </blockquote>
-                        <p className="testimonial-author">
-                            <span className="testimonial-name">Salma Richardson</span>
-                            <span className="testimonial-rating" aria-label="Rated 4 out of 5 stars">
-        ★★★★☆
-      </span>
-                        </p>
-                    </div>
-
-
-                </div>
-            </section>
-            {/*________________________________________________________________________________*/}
-            <section id="photo-placeholder">
+            <Section id="photo-placeholder">
                 <aside>
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>We cook nice dishes for all family</p>
                 </aside>
                 <div className="image-wrapper">
-                    <img src="/photos/restaurant.jpg" alt="restaurant food" loading="lazy"/>
-                    <img src="/photos/Mario and Adrian A.jpg" alt="our cookers" loading="lazy"/>
+                    <img src="/photos/restaurant.jpg" alt="restaurant food" />
+                    <img src="/photos/Mario and Adrian A.jpg" alt="our cookers" />
                 </div>
-            </section>
+            </Section>
         </main>
     );
 }

@@ -194,7 +194,7 @@ p {
 
 
 /* Style for the testimonials section */
-.testimonials {
+#testimonials-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
