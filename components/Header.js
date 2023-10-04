@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {NavLink} from "react-router-dom";
+import Link from 'next/link';
 
-const Hambutton = ({handleMenuToggle}) => {
+const HamButton = ({handleMenuToggle}) => {
     return(
         <button className="hamburger-button"
                 onClick={handleMenuToggle}
@@ -12,7 +12,7 @@ const Hambutton = ({handleMenuToggle}) => {
     )
 };
 
-const Crossbutton = ({ handleMenuToggle }) => {
+const CrossButton = ({ handleMenuToggle }) => {
     return(
         <div className="cross-button-container">
             <button className="cross-button"
@@ -28,27 +28,27 @@ const Crossbutton = ({ handleMenuToggle }) => {
 const VerticalMenu = ({ handleMenuToggle }) => {
     const navLinks = [
         { to: "/", label: "Home" },
-        { to: "/about", label: "About" },
-        { to: "/menu", label: "Menu" },
-        { to: "/reservations", label: "Reservations" },
-        { to: "/order", label: "Order online" },
-        { to: "/login", label: "Login" },
+        { to: "/underConstruction", label: "About" },
+        { to: "/underConstruction", label: "Menu" },
+        { to: "/booking", label: "Booking" },
+        { to: "/underConstruction", label: "Order online" },
+        { to: "/underConstruction", label: "Login" },
     ];
 
     return (
         <nav id="nav-links-mobile">
-            <Crossbutton handleMenuToggle={handleMenuToggle} />
+            <CrossButton handleMenuToggle={handleMenuToggle} />
             <ul role="navigation">
                 {navLinks.map((link) => (
                     <li key={link.to}>
-                        <NavLink
+                        <Link
                             className="navlink-mobile"
-                            to={link.to}
+                            href={link.to}
                             aria-label={link.label}
                             onClick={handleMenuToggle}
                         >
                             {link.label}
-                        </NavLink>
+                        </Link>
                     </li>
                 ))}
             </ul>
@@ -65,18 +65,18 @@ const MobileNavbar = () => {
 
     return(
         <>
-        {closed ? <Hambutton handleMenuToggle={handleMenuToggle}/> : <VerticalMenu handleMenuToggle={handleMenuToggle}/>}
+        {closed ? <HamButton handleMenuToggle={handleMenuToggle}/> : <VerticalMenu handleMenuToggle={handleMenuToggle}/>}
         </>
     )
 }
 const Navbar = () => {
     const navLinks = [
         { to: "/", label: "Home" },
-        { to: "/about", label: "About" },
-        { to: "/menu", label: "Menu" },
-        { to: "/reservations", label: "Reservations" },
-        { to: "/order", label: "Order online" },
-        { to: "/login", label: "Login" },
+        { to: "/underConstruction", label: "About" },
+        { to: "/underConstruction", label: "Menu" },
+        { to: "/booking", label: "Booking" },
+        { to: "/underConstruction", label: "Order online" },
+        { to: "/underConstruction", label: "Login" },
     ];
 
     return (
@@ -84,13 +84,13 @@ const Navbar = () => {
             <ul role="navigation">
                 {navLinks.map((link) => (
                     <li key={link.to}>
-                        <NavLink
+                        <Link
                             className="navlink"
-                            to={link.to}
+                            href={link.to}
                             aria-label={link.label}
                         >
                             {link.label}
-                        </NavLink>
+                        </Link>
                     </li>
                 ))}
             </ul>
@@ -100,7 +100,7 @@ const Navbar = () => {
 
 
 
-function Header(){
+export default function Header(){
     const [isMobile, setMobile] = useState(false);
 
     useEffect(() => {
@@ -126,4 +126,3 @@ function Header(){
     )
 }
 
-export {Header};

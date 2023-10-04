@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer(){
+export default function Footer(){
     return(
         <footer>
             <img src="/photos/footer_logo.png" alt="restaurant food"/>
@@ -18,5 +18,4 @@ function Footer(){
             </address>
         </footer>
     )
-}
-export default Footer;
+};

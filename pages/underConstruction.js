@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UnderConstruction = () => {
+const underConstruction = () => {
     return (
         <div className="under-construction">
             <div className="image-container-construction">
@@ -12,4 +12,4 @@ const UnderConstruction = () => {
     );
 };
 
-export default UnderConstruction;
+export default underConstruction;

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import Link from "next/link";
 
 function Section({ id, children }) {
     return <section id={id}>{children}</section>;
@@ -13,7 +13,7 @@ function Article({ src, alt, caption, description }) {
                 <figcaption>{caption}</figcaption>
             </figure>
             <p>{description}</p>
-            <Link className="yellow-button" to="#">
+            <Link className="yellow-button" href="#">
                 Order a delivery...
             </Link>
         </article>
@@ -36,7 +36,7 @@ function Testimonial({ text, author, rating }) {
     );
 }
 
-function Home() {
+export default function Home() {
     return (
         <main>
             <Section id="intro-placeholder">
@@ -44,7 +44,7 @@ function Home() {
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>Homemade food from organic ingredients from a local farm</p>
-                    <Link className="yellow-button" to="/reservations">
+                    <Link className="yellow-button" href="/pages/booking">
                         Reserve a table
                     </Link>
                 </aside>
@@ -105,6 +105,4 @@ function Home() {
             </Section>
         </main>
     );
-}
-
-export default Home;
+};

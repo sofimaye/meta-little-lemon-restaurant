@@ -2,14 +2,14 @@ import '@testing-library/jest-dom/extend-expect';
 import React from "react";
 import {render, screen, act} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import BookingPage from "./BookingPage";
+import booking from "../pages/booking";
 import {MemoryRouter} from "react-router-dom";
-import BookingForm from "./BookingForm";
+import BookingForm from "../components/BookingForm";
 
 test('check initializeTimes function', () => {
     render(
         <MemoryRouter>
-            <BookingPage/>
+            <booking/>
         </MemoryRouter>
     );
 
@@ -27,7 +27,7 @@ test('check initializeTimes function', () => {
 describe('BookingForm', () => {
     test('Renders the BookingForm heading', () => {
         render(<MemoryRouter>
-            <BookingPage/>
+            <booking/>
         </MemoryRouter>);
         const headingElement = screen.getByText('Book now');
         expect(headingElement).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('BookingForm', () => {
 
     test('Validates attributes for input fields', () => {
         render(<MemoryRouter>
-            <BookingPage/>
+            <booking/>
         </MemoryRouter>);
 
         // First name input
@@ -94,7 +94,7 @@ describe('BookingForm', () => {
 describe('Testing valid states of inputs after initial load', () => {
     test('Initial page load', () => {
         render(<MemoryRouter>
-            <BookingPage/>
+            <booking/>
         </MemoryRouter>);
 
         // First name input

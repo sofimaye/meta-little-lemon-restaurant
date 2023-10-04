@@ -1,7 +1,6 @@
 import React from "react";
-import "./ConfirmedBooking.css";
 
-export default function ConfirmedBooking() {
+export default function confirmedBooking() {
     return (
         <div className="confirmation-container">
         <div className="confirmed-booking">
