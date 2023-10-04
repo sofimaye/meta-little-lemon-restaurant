@@ -1,6 +1,15 @@
 import React, {useEffect, useState} from "react";
 import Link from 'next/link';
 
+const navLinks = [
+    { id: 1, to: "/", label: "Home" },
+    { id: 2, to: "/underConstruction", label: "About" },
+    { id: 3, to: "/underConstruction", label: "Menu" },
+    { id: 4, to: "/booking", label: "Booking" },
+    { id: 5, to: "/underConstruction", label: "Order online" },
+    { id: 6, to: "/underConstruction", label: "Login" },
+];
+
 const HamButton = ({handleMenuToggle}) => {
     return(
         <button className="hamburger-button"
@@ -25,22 +34,13 @@ const CrossButton = ({ handleMenuToggle }) => {
     )
 }
 
-const VerticalMenu = ({ handleMenuToggle }) => {
-    const navLinks = [
-        { to: "/", label: "Home" },
-        { to: "/underConstruction", label: "About" },
-        { to: "/underConstruction", label: "Menu" },
-        { to: "/booking", label: "Booking" },
-        { to: "/underConstruction", label: "Order online" },
-        { to: "/underConstruction", label: "Login" },
-    ];
-
+const VerticalMenu = ({ handleMenuToggle}) => {
     return (
         <nav id="nav-links-mobile">
             <CrossButton handleMenuToggle={handleMenuToggle} />
             <ul role="navigation">
                 {navLinks.map((link) => (
-                    <li key={link.to}>
+                    <li key={link.id}>
                         <Link
                             className="navlink-mobile"
                             href={link.to}
@@ -69,21 +69,13 @@ const MobileNavbar = () => {
         </>
     )
 }
-const Navbar = () => {
-    const navLinks = [
-        { to: "/", label: "Home" },
-        { to: "/underConstruction", label: "About" },
-        { to: "/underConstruction", label: "Menu" },
-        { to: "/booking", label: "Booking" },
-        { to: "/underConstruction", label: "Order online" },
-        { to: "/underConstruction", label: "Login" },
-    ];
 
+const Navbar = () => {
     return (
         <nav id="nav-links">
             <ul role="navigation">
                 {navLinks.map((link) => (
-                    <li key={link.to}>
+                    <li key={link.id}>
                         <Link
                             className="navlink"
                             href={link.to}

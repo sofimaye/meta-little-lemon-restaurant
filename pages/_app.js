@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/globals.css';
 import '../styles/booking-form.css';
 import '../styles/UnderConstruction.css';
 import '../styles/ConfirmedBooking.css';
-import '../styles/globals.css';
+import '../styles/404.css';
 import Head from "next/head";
 import Header from '../components/Header';
 import Footer from "../components/Footer";
