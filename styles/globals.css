@@ -71,7 +71,7 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 30vh;
+  height: 50vh;
   background-color: #495e57;
 }
 
@@ -84,11 +84,14 @@ header{
 }
 .image-wrapper-about{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 100%;
   width: auto;
 }
-
+.image-wrapper-about img{
+  height: 100%;
+  width: auto;
+}
 .image-wrapper {
   display: flex;
   justify-content: space-around;
@@ -354,9 +357,23 @@ footer a {
   .navlink-mobile.active {
     background-color: #f0f0f0; /* Optional: Add a background color to the active link */
   }
+  #intro-placeholder{
+    flex-direction: column;
+    height: fit-content;
+  }
+  #intro-placeholder img{
+    max-height: 30vh;
+    margin: 20px;
+  }
+  .image-wrapper-about{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
 
   .about-little-lemon{
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     padding: 2%;
   }
 
