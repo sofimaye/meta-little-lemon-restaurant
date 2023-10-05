@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import Link from 'next/link';
-import UnderConstruction from "../pages/underConstruction";
 
 const navLinks = [
     { id: 1, to: "/", label: "Home"},
-    { id: 2, to: "/about", label: "About", state: 'does not exist'},
-    { id: 3, to: "/menu", label: "Menu",  state: 'does not exist' },
+    { id: 2, to: "/underConstruction", label: "About"},
+    { id: 3, to: "/underConstruction", label: "Menu"},
     { id: 4, to: "/booking", label: "Booking" },
-    { id: 5, to: "/order", label: "Order online",  state: 'does not exist'},
-    { id: 6, to: "/login", label: "Login",  state: 'does not exist'},
+    { id: 5, to: "/underConstruction", label: "Order online"},
+    { id: 6, to: "/underConstruction", label: "Login"},
 ];
 
 const HamButton = ({handleMenuToggle}) => {
