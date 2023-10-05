@@ -12,6 +12,7 @@ function MyApp({Component, pageProps}) {
     return (
         <>
             <Head>
+                <html lang="en"/>
                 <meta charSet="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <title>Little Lemon Restaurant</title>
