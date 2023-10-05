@@ -22,6 +22,8 @@ function MyApp({Component, pageProps}) {
                 <meta name="og:title" content="Little Lemon"/>
                 <meta name="og:description" content="Family restaurant"/>
                 <meta name="og:image" content="/photos/restauranfood.jpg"/>
+                <meta property="og:locale" content="en_US"/>
+                <meta property="og:site_name" content="Little Lemon"/>
             </Head>
             <Header/>
             <Component {...pageProps} />
